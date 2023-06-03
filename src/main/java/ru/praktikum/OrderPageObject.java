@@ -1,15 +1,15 @@
 package ru.praktikum;
 
-import ru.praktikum.enums.Users;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ru.praktikum.enums.Users;
 
-import static ru.praktikum.config.Config.URL;
 import static org.hamcrest.CoreMatchers.startsWith;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static ru.praktikum.config.Config.URL;
 
 public class OrderPageObject {
     MainPageObject mainPageObject = new MainPageObject();
@@ -20,6 +20,7 @@ public class OrderPageObject {
     String phoneNumber;
     String date;
     String comment;
+    int numberOfButton;
 
     public OrderPageObject(WebDriver driver, Users users) {
         this.driver = driver;
@@ -30,6 +31,7 @@ public class OrderPageObject {
         this.phoneNumber = users.getPhoneNumber();
         this.date = users.getDate();
         this.comment = users.getComment();
+        this.numberOfButton = users.numberOfButton();
     }
 
     private final By inputFirstName = By.cssSelector("div.Order_Form__17u6u > div:nth-child(1) > input");
@@ -48,7 +50,7 @@ public class OrderPageObject {
     private final By yesButton = By.cssSelector("div.Order_Modal__YZ-d3 > div.Order_Buttons__1xGrp > button:nth-child(2)");
     private final By orderLabel = By.xpath(".//div[@class='Order_ModalHeader__3FDaJ' and text()='Заказ оформлен']");
 
-    public OrderPageObject clickOrderButton(int numberOfButton) {
+    public OrderPageObject clickOrderButton() {
         switch (numberOfButton) {
             case 1: {
                 driver.findElement(mainPageObject.getFirstOrderButton()).click();

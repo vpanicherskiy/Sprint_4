@@ -9,7 +9,7 @@ public class CreateOrder extends BaseTest {
     @EnumSource(Users.class)
     public void createOrder(Users users) {
         new OrderPageObject(driver, users)
-                .clickOrderButton(1)
+                .clickOrderButton()
                 .fillingUserForm()
                 .fillingRentForm()
                 .clickCreateOrderButton()

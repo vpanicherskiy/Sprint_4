@@ -1,21 +1,15 @@
 package ru.praktikum;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.praktikum.enums.FaqList;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static ru.praktikum.config.Config.URL;
 
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MainPageObject {
     WebDriver driver;
     String dropDownElement;
@@ -30,8 +24,19 @@ public class MainPageObject {
         this.expected = faqList.getExpected();
     }
 
-    private By firstOrderButton = By.className("Button_Button__ra12g");
-    private By secondOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+    public MainPageObject() {
+    }
+
+    private final By firstOrderButton = By.className("Button_Button__ra12g");
+    private final By secondOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
+
+    public By getFirstOrderButton() {
+        return firstOrderButton;
+    }
+
+    public By getSecondOrderButton() {
+        return secondOrderButton;
+    }
 
     public MainPageObject clickDropdownButton() {
         WebElement element = driver.findElement(By.xpath(".//*[@id='accordion__heading-" + dropDownElement + "']"));
@@ -44,7 +49,7 @@ public class MainPageObject {
         boolean isDisplayed = driver.findElement(By.xpath(".//*[@id='accordion__panel-" + dropDownText + "']/p")).isDisplayed();
         assertTrue(isDisplayed);
         String elementText = driver.findElement(By.xpath(".//*[@id='accordion__panel-" + dropDownText + "']/p")).getText();
-        Assert.assertEquals(expected, elementText);
+        assertEquals(expected, elementText);
     }
 }
 
