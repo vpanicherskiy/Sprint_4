@@ -1,5 +1,10 @@
 package ru.praktikum.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum FaqList {
     price("0", "0", "Сутки — 400 рублей. Оплата курьеру — наличными или картой."),
     severalScooters("1", "1", "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."),
@@ -9,24 +14,6 @@ public enum FaqList {
     charge("5", "5", "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится."),
     cancel("6", "6", "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."),
     delivery("7", "7", "Да, обязательно. Всем самокатов! И Москве, и Московской области.");
-
-    FaqList(String buttonIndex, String elementIndex, String expected) {
-        this.buttonIndex = buttonIndex;
-        this.elementIndex = elementIndex;
-        this.expected = expected;
-    }
-
-    public String getButtonIndex() {
-        return buttonIndex;
-    }
-
-    public String getElementIndex() {
-        return elementIndex;
-    }
-
-    public String getExpected() {
-        return expected;
-    }
 
     private final String buttonIndex;
     private final String elementIndex;

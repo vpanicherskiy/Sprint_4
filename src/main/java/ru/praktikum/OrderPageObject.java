@@ -31,7 +31,7 @@ public class OrderPageObject {
         this.phoneNumber = users.getPhoneNumber();
         this.date = users.getDate();
         this.comment = users.getComment();
-        this.numberOfButton = users.numberOfButton();
+        this.numberOfButton = users.getNumberOfButton();
     }
 
     private final By inputFirstName = By.cssSelector("div.Order_Form__17u6u > div:nth-child(1) > input");
